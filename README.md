@@ -3,6 +3,8 @@
 A new Flutter project.
 
 ## Getting Started
+![Alt text](image.png)
+![Alt text](image-1.png)
 
 This project is a starting point for a Flutter application.
 

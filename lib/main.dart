@@ -36,7 +36,8 @@ class _PhotoListScreenState extends State<PhotoListScreen> {
 
   Future<void> fetchPhotos() async {
     try {
-      final response = await http.get(Uri.parse('https://jsonplaceholder.typicode.com/photos'));
+      final response = await http
+          .get(Uri.parse('https://jsonplaceholder.typicode.com/photos'));
       if (response.statusCode == 200) {
         final List<dynamic> parsedData = json.decode(response.body);
         setState(() {
@@ -61,27 +62,28 @@ class _PhotoListScreenState extends State<PhotoListScreen> {
       ),
       body: photos.isNotEmpty
           ? ListView.separated(
-        itemCount: photos.length,
-        separatorBuilder: (context, index) => Divider(), // Add a Divider between items
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(photos[index].title),
-            leading: Image.network(photos[index].thumbnailUrl),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => PhotoDetailScreen(photo: photos[index]),
-                ),
-              );
-            },
-          );
-        },
-      )
-
+              itemCount: photos.length,
+              separatorBuilder: (context, index) =>
+                  Divider(), // Add a Divider between items
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(photos[index].title),
+                  leading: Image.network(photos[index].thumbnailUrl),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            PhotoDetailScreen(photo: photos[index]),
+                      ),
+                    );
+                  },
+                );
+              },
+            )
           : Center(
-        child: CircularProgressIndicator(),
-      ),
+              child: CircularProgressIndicator(),
+            ),
     );
   }
 }
@@ -92,7 +94,11 @@ class Photo {
   final String thumbnailUrl;
   final String url;
 
-  Photo({required this.id, required this.title, required this.thumbnailUrl, required this.url});
+  Photo(
+      {required this.id,
+      required this.title,
+      required this.thumbnailUrl,
+      required this.url});
 
   factory Photo.fromJson(Map<String, dynamic> json) {
     return Photo(
@@ -103,5 +109,3 @@ class Photo {
     );
   }
 }
-
-

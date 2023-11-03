@@ -11,7 +11,7 @@ class PhotoDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Photo Details'),
-                backgroundColor: Colors.blue,
+        backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
         toolbarHeight: 80,
       ),
@@ -27,10 +27,12 @@ class PhotoDetailScreen extends StatelessWidget {
                   return Center(
                     child: CircularProgressIndicator(),
                   );
-                }  else {
+                } else {
                   return Column(
                     children: [
-                      SizedBox(height: 60,),
+                      SizedBox(
+                        height: 60,
+                      ),
                       Image.network(photo.url),
                     ],
                   );
